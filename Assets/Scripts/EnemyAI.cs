@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NonRangedEnemyAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private float speed;
-    private Transform targetTransform;
+    protected Transform targetTransform;
+    [SerializeField] private int health;
 
-    private void Start()
+    protected virtual void Start()
     {
         targetTransform = GameObject.FindGameObjectWithTag("player").transform;
     }
@@ -17,7 +18,7 @@ public class NonRangedEnemyAI : MonoBehaviour
         Move();
     }
 
-    private void Move()
+    protected virtual void Move()
     {
         float distance = Vector3.Distance(transform.position, targetTransform.position);
         float interpolant = (speed * Time.deltaTime) / distance;
@@ -29,6 +30,15 @@ public class NonRangedEnemyAI : MonoBehaviour
         if(collision.gameObject.CompareTag("player"))
         {
             //damage player
+            Destroy(gameObject);
+        }
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        health -= damageAmount;
+        if(health <= 0)
+        {
             Destroy(gameObject);
         }
     }
