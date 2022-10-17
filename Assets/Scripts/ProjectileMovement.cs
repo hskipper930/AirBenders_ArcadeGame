@@ -25,9 +25,14 @@ public class ProjectileMovement : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, targetPosition, interpolant);
         if(transform.position == targetPosition)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
+    }
 }
