@@ -329,7 +329,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 758938751}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1.89}
   m_LocalScale: {x: 7.2491, y: 7.2491, z: 7.2491}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -446,14 +446,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961739749}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -20}
+  m_LocalRotation: {x: 0.2786148, y: -0, z: -0, w: 0.96040297}
+  m_LocalPosition: {x: 0, y: 12.51, z: -17.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 32.355, y: 0, z: 0}
 --- !u!1 &1650254525
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +489,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!136 &1650254527
 CapsuleCollider:
@@ -554,7 +554,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650254525}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1650254530
 Transform:
   m_ObjectHideFlags: 0
@@ -585,10 +585,14 @@ MonoBehaviour:
   cam: {fileID: 961739752}
   movementSpeed: 5
   HP: 0
-  Damage: 0
+  damage: 0
   meleeHitbox: {fileID: 0}
   rangedHitbox: {fileID: 6952561020596155666, guid: 499affbf24bbcd646935d930cda26fae,
     type: 3}
+  meleeAttackRange: 3
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1860488954
 GameObject:
   m_ObjectHideFlags: 0
