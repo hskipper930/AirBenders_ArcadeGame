@@ -6,7 +6,7 @@ public class ProjectileObjectPooling : MonoBehaviour
 {
     [SerializeField] private GameObject projectile;
     [SerializeField] private int initialNumber;
-    private static List<GameObject> projectilePool;
+    private static List<GameObject> projectilePool = new List<GameObject>();
 
     private void Start()
     {
