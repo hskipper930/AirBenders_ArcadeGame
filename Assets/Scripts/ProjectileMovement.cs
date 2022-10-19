@@ -30,9 +30,13 @@ public class ProjectileMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         //Destroy(gameObject);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        if (!collision.gameObject.CompareTag("enemy"))
+        {
+            ProjectileObjectPooling.DeactivateProjectile(gameObject);
+        }
     }
 }
