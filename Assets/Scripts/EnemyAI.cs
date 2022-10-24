@@ -39,6 +39,10 @@ public class EnemyAI : MonoBehaviour
         health -= damageAmount;
         if(health <= 0)
         {
+            //rng
+            //if > xyz drop powerup start
+            //rng which powerup
+            //place powerup
             Destroy(gameObject);
         }
     }

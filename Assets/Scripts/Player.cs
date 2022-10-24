@@ -46,16 +46,11 @@ public class Player : MonoBehaviour
         }
         Debug.Log("Mouse Position: " + mousePos);
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            GameObject shot = Instantiate(rangedHitbox, transform.position, transform.rotation);
-            shot.GetComponent<ProjectileMovement>().SetTarget(mousePos);
-        }
-
         if (Input.GetMouseButtonDown(0))
         {
-            //GameObject shot = Instantiate(meleeHitbox, transform.position, transform.rotation);
+            //GameObject shot = Instantiate(rangedHitbox, transform.position, transform.rotation);
             //shot.GetComponent<ProjectileMovement>().SetTarget(mousePos);
+            ProjectileObjectPooling.ActivateProjectile(transform.position, mousePos);
         }
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
