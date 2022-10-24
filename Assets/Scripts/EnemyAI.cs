@@ -7,6 +7,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float speed;
     protected Transform targetTransform;
     [SerializeField] private int health;
+    [SerializeField] protected int damage;
 
     protected virtual void Start()
     {
