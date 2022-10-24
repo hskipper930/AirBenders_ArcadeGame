@@ -27,14 +27,18 @@ public class ProjectileObjectPooling : MonoBehaviour
         CreateProjectiles(initialNumber);
     }
 
-    public static void ActivateProjectile(Vector3 startPosition, Vector3 targetPosition)
+    public static void ActivateProjectile(Vector3 startPosition, Vector3 targetPosition, string tag, int damage)
     {
         if (projectilePool.Count > 0)
         {
             projectilePool[0].transform.position = startPosition;
             projectilePool[0].SetActive(true);
-            projectilePool[0].GetComponent<ProjectileMovement>().SetTarget(targetPosition);
+            ProjectileMovement projectileScript = projectilePool[0].GetComponent<ProjectileMovement>();
+            projectileScript.SetTarget(targetPosition);
+            projectileScript.SetTag(tag);
+            projectileScript.SetDamage(damage);
             projectilePool.RemoveAt(0);
+
         }
         else
         {

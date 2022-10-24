@@ -24,7 +24,7 @@ public class RangedEnemyAI : EnemyAI
         {
             //GameObject projectileInstance = Instantiate(projectile, transform.position, transform.rotation);
             //projectileInstance.GetComponent<ProjectileMovement>().SetTarget(targetTransform.position);
-            ProjectileObjectPooling.ActivateProjectile(transform.position, targetTransform.position);
+            ProjectileObjectPooling.ActivateProjectile(transform.position, targetTransform.position, "hostile", damage);
             yield return new WaitForSeconds(shootCooldown);
         }
     }

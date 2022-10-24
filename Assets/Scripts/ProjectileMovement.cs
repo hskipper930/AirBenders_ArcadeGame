@@ -5,12 +5,21 @@ using UnityEngine;
 public class ProjectileMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
+    private int damage;
     private Vector3 targetPosition;
 
-    //note: the projectile's target MUST be set immediately after instantiating a projectile
+    public void SetDamage(int amount)
+    {
+        damage = amount;
+    }
     public void SetTarget(Vector3 position)
     {
         targetPosition = position;
+    }
+
+    public void SetTag(string tag)
+    {
+        gameObject.tag = tag;
     }
 
     private void Update()
@@ -25,18 +34,15 @@ public class ProjectileMovement : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, targetPosition, interpolant);
         if(transform.position == targetPosition)
         {
-            //Destroy(gameObject);
             gameObject.SetActive(false);
         }
     }
 
     private void OnTriggerEnter(Collider collision)
     {
-        //Destroy(gameObject);
-        //gameObject.SetActive(false);
-        if (!collision.gameObject.CompareTag("enemy"))
+        /*if (!collision.gameObject.CompareTag("enemy"))
         {
             ProjectileObjectPooling.DeactivateProjectile(gameObject);
-        }
+        }*/
     }
 }
