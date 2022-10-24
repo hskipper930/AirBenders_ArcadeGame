@@ -23,6 +23,9 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject rangedHitbox;
     [SerializeField] private float meleeAttackRange;
     public LayerMask enemyLayer;
+
+    private bool damageUp = false;
+    private bool speedUp = false;
     #endregion CombatParameters
 
     // Start is called before the first frame update
@@ -50,7 +53,7 @@ public class Player : MonoBehaviour
         {
             //GameObject shot = Instantiate(rangedHitbox, transform.position, transform.rotation);
             //shot.GetComponent<ProjectileMovement>().SetTarget(mousePos);
-            ProjectileObjectPooling.ActivateProjectile(transform.position, mousePos);
+            ProjectileObjectPooling.ActivateProjectile(transform.position, mousePos,);
         }
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -80,5 +83,44 @@ public class Player : MonoBehaviour
             Debug.Log("EnemyHit");
             enemy.GetComponent<EnemyAI>().TakeDamage(damage);
         }
+    }
+
+    //------------TAKE DAMAGE FUNCTION-----------------
+
+    public void SetDamageUp()
+    {
+        StartCoroutine(DamageUpTimer());
+    }
+
+    public void SetSpeedUp()
+    {
+        StartCoroutine(SpeedUpTimer());
+    }
+
+    private IEnumerator DamageUpTimer()
+    {
+        damage = 20;
+        int timeLeft = 10;
+        while(timeLeft >= 0)
+        {
+            Debug.Log("PowerUp still going");
+            yield return new WaitForSeconds(1.0f);
+            timeLeft--;
+        }
+        damage = 10;
+    }
+
+    private IEnumerator SpeedUpTimer()
+    {
+        float previousMoveSpeed = movementSpeed;
+        movementSpeed = 7.5f;
+        int timeLeft = 10;
+        while (timeLeft >= 0)
+        {
+            Debug.Log("PowerUp still going");
+            yield return new WaitForSeconds(1.0f);
+            timeLeft--;
+        }
+        movementSpeed = previousMoveSpeed;
     }
 }
