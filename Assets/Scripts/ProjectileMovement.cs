@@ -40,9 +40,27 @@ public class ProjectileMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        /*if (!collision.gameObject.CompareTag("enemy"))
+        if(gameObject.CompareTag("hostile"))
         {
-            ProjectileObjectPooling.DeactivateProjectile(gameObject);
-        }*/
+            if (collision.gameObject.CompareTag("player"))
+            {
+                //damage player
+            }
+            if (!collision.gameObject.CompareTag("enemy"))
+            {
+                ProjectileObjectPooling.DeactivateProjectile(gameObject);
+            }
+        }
+        if(gameObject.CompareTag("friendly"))
+        {
+            if(gameObject.CompareTag("enemy"))
+            {
+                //damage enemy
+            }
+            if(!collision.gameObject.CompareTag("player"))
+            {
+                ProjectileObjectPooling.DeactivateProjectile(gameObject);
+            }
+        }
     }
 }
