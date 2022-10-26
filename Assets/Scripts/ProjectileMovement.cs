@@ -45,9 +45,6 @@ public class ProjectileMovement : MonoBehaviour
             if (collision.gameObject.CompareTag("player"))
             {
                 //damage player
-            }
-            if (!collision.gameObject.CompareTag("enemy"))
-            {
                 ProjectileObjectPooling.DeactivateProjectile(gameObject);
             }
         }
@@ -56,9 +53,6 @@ public class ProjectileMovement : MonoBehaviour
             if(collision.gameObject.CompareTag("enemy"))
             {
                 collision.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
-            }
-            if(!collision.gameObject.CompareTag("player"))
-            {
                 ProjectileObjectPooling.DeactivateProjectile(gameObject);
             }
         }

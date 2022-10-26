@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField] protected float speed;
     protected Transform targetTransform;
     [SerializeField] private int health;
     [SerializeField] protected int damage;
     [SerializeField] private GameObject[] powerUps;
     [SerializeField] private int powerUpDropChance;
+
+    public void SetStats(int enemyhealth, int enemyDamage, int enemySpeed)
+    {
+        health = enemyhealth;
+        damage = enemyDamage;
+        speed = enemySpeed;
+    }
 
     protected virtual void Start()
     {
@@ -28,11 +35,12 @@ public class EnemyAI : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, targetTransform.position, interpolant);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("player"))
         {
             //damage player
+            OnDeath();
             Destroy(gameObject);
         }
     }

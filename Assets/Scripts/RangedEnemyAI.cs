@@ -14,7 +14,7 @@ public class RangedEnemyAI : EnemyAI
 
     protected override void Move(){}
 
-    private IEnumerator Shoot()
+    protected IEnumerator Shoot()
     {
         for(; ; )
         {
