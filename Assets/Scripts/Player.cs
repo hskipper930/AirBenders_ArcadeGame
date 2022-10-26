@@ -16,11 +16,10 @@ public class Player : MonoBehaviour
 
     //----------Combat Parameters--------------
     #region CombatParameters
-    [SerializeField] private int HP;
+    [SerializeField] private int health;
     [SerializeField] private int damage;
+    [SerializeField] private int defense;
     private Vector3 mousePos;
-    [SerializeField] private GameObject meleeHitbox;
-    [SerializeField] private GameObject rangedHitbox;
     [SerializeField] private float meleeAttackRange;
     public LayerMask enemyLayer;
     #endregion CombatParameters
@@ -49,7 +48,7 @@ public class Player : MonoBehaviour
         {
             //GameObject shot = Instantiate(rangedHitbox, transform.position, transform.rotation);
             //shot.GetComponent<ProjectileMovement>().SetTarget(mousePos);
-            //ProjectileObjectPooling.ActivateProjectile(transform.position, mousePos,);
+            ProjectileObjectPooling.ActivateProjectile(transform.position, mousePos, "friendly", damage);
         }
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -59,6 +58,23 @@ public class Player : MonoBehaviour
     {
         //--------Movement-------------
         playerRB.MovePosition(playerRB.position + movement * movementSpeed * Time.fixedDeltaTime);
+
+        if(transform.position.x > 25)
+        {
+            playerRB.AddForce(new Vector3 (-15, 0));
+        }
+        if (transform.position.x < -25)
+        {
+            playerRB.AddForce(new Vector3(15, 0));
+        }
+        if (transform.position.y > 12)
+        {
+            playerRB.AddForce(new Vector3(0, -15));
+        }
+        if (transform.position.y < -12)
+        {
+            playerRB.AddForce(new Vector3(0, 15));
+        }
 
         //Vector3 lookDir = mousePos - playerRB.position;
         //float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
@@ -81,7 +97,15 @@ public class Player : MonoBehaviour
     }
 
     //------------TAKE DAMAGE FUNCTION-----------------
-
+    public void TakeDamage(int dmg)
+    {
+        dmg -= defense;
+        health -= dmg;
+        if(health <= 0)
+        {
+            //GAME OVER (Call Game Manager for Game Over)
+        }
+    }
 
     //-----------PowerUps
 
