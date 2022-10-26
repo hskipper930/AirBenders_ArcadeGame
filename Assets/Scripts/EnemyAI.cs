@@ -8,6 +8,8 @@ public class EnemyAI : MonoBehaviour
     protected Transform targetTransform;
     [SerializeField] private int health;
     [SerializeField] protected int damage;
+    [SerializeField] private GameObject[] powerUps;
+    [SerializeField] private int powerUpDropChance;
 
     protected virtual void Start()
     {
@@ -40,11 +42,19 @@ public class EnemyAI : MonoBehaviour
         health -= damageAmount;
         if(health <= 0)
         {
-            //rng
-            //if > xyz drop powerup start
-            //rng which powerup
-            //place powerup
+            OnDeath();
             Destroy(gameObject);
+        }
+    }
+
+    private void OnDeath()
+    {
+        int randomNum = Random.Range(0, 100);
+        if(randomNum <= powerUpDropChance)
+        {
+            //randomNum = Random.Range(0, powerUps.Length - 1);
+            //Instantiate(powerUps[randomNum], transform.position, transform.rotation);
+
         }
     }
 

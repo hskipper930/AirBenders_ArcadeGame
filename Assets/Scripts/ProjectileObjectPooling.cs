@@ -20,30 +20,22 @@ public class ProjectileObjectPooling : MonoBehaviour
         {
             instance = this;
         }
-    }
-
-    private void Start()
-    {
         CreateProjectiles(initialNumber);
     }
 
     public static void ActivateProjectile(Vector3 startPosition, Vector3 targetPosition, string tag, int damage)
     {
-        if (projectilePool.Count > 0)
-        {
-            projectilePool[0].transform.position = startPosition;
-            projectilePool[0].SetActive(true);
-            ProjectileMovement projectileScript = projectilePool[0].GetComponent<ProjectileMovement>();
-            projectileScript.SetTarget(targetPosition);
-            projectileScript.SetTag(tag);
-            projectileScript.SetDamage(damage);
-            projectilePool.RemoveAt(0);
-
-        }
-        else
+        if (projectilePool.Count <= 0)
         {
             instance.CreateProjectiles(instance.expansionNumber);
         }
+        projectilePool[0].transform.position = startPosition;
+        projectilePool[0].SetActive(true);
+        ProjectileMovement projectileScript = projectilePool[0].GetComponent<ProjectileMovement>();
+        projectileScript.SetTarget(targetPosition);
+        projectileScript.SetTag(tag);
+        projectileScript.SetDamage(damage);
+        projectilePool.RemoveAt(0);
     }
 
     public static void DeactivateProjectile(GameObject projectile)

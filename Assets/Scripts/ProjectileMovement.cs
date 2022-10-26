@@ -53,9 +53,9 @@ public class ProjectileMovement : MonoBehaviour
         }
         if(gameObject.CompareTag("friendly"))
         {
-            if(gameObject.CompareTag("enemy"))
+            if(collision.gameObject.CompareTag("enemy"))
             {
-                //damage enemy
+                collision.gameObject.GetComponent<EnemyAI>().TakeDamage(damage);
             }
             if(!collision.gameObject.CompareTag("player"))
             {
