@@ -5,7 +5,6 @@ using UnityEngine;
 public class RangedEnemyAI : EnemyAI
 {
     [SerializeField] private float shootCooldown; //number of seconds between firing.
-    [SerializeField] private GameObject projectile;
 
     protected override void Start()
     {
@@ -13,17 +12,12 @@ public class RangedEnemyAI : EnemyAI
         StartCoroutine(Shoot());
     }
 
-    protected override void Move()
-    {
-        // enemy will randomly move side-to-side
-    }
+    protected override void Move(){}
 
     private IEnumerator Shoot()
     {
         for(; ; )
         {
-            //GameObject projectileInstance = Instantiate(projectile, transform.position, transform.rotation);
-            //projectileInstance.GetComponent<ProjectileMovement>().SetTarget(targetTransform.position);
             ProjectileObjectPooling.ActivateProjectile(transform.position, targetTransform.position, "hostile", damage);
             yield return new WaitForSeconds(shootCooldown);
         }
