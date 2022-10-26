@@ -23,9 +23,6 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject rangedHitbox;
     [SerializeField] private float meleeAttackRange;
     public LayerMask enemyLayer;
-
-    private bool damageUp = false;
-    private bool speedUp = false;
     #endregion CombatParameters
 
     // Start is called before the first frame update
@@ -47,7 +44,6 @@ public class Player : MonoBehaviour
         {
             mousePos = look.point;
         }
-        Debug.Log("Mouse Position: " + mousePos);
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -57,7 +53,6 @@ public class Player : MonoBehaviour
         }
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log("Mouse Position: " + mousePos);
     }
 
     private void FixedUpdate()
@@ -67,8 +62,8 @@ public class Player : MonoBehaviour
 
         //Vector3 lookDir = mousePos - playerRB.position;
         //float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        Quaternion lookRot = Quaternion.LookRotation(mousePos, Vector3.forward);
-        playerRB.rotation = lookRot;
+        //Quaternion lookRot = Quaternion.LookRotation(mousePos, Vector3.forward);
+        //playerRB.rotation = lookRot;
     }
 
     private void Attack()
@@ -87,40 +82,23 @@ public class Player : MonoBehaviour
 
     //------------TAKE DAMAGE FUNCTION-----------------
 
-    public void SetDamageUp()
-    {
-        StartCoroutine(DamageUpTimer());
-    }
 
-    public void SetSpeedUp()
-    {
-        StartCoroutine(SpeedUpTimer());
-    }
+    //-----------PowerUps
 
-    private IEnumerator DamageUpTimer()
+    //Collisiion
+    public void OnTriggerEnter(Collider other)
     {
-        damage = 20;
-        int timeLeft = 10;
-        while(timeLeft >= 0)
+        Debug.Log("Hit Trigger");
+        switch (other.tag)
         {
-            Debug.Log("PowerUp still going");
-            yield return new WaitForSeconds(1.0f);
-            timeLeft--;
+            case "PowerUp/SpeedUp":
+                movementSpeed += 0.1f;
+                Destroy(other.gameObject);
+                break;
+            case "PowerUp/DamageUp":
+                damage += 2;
+                Destroy(other.gameObject);
+                break;
         }
-        damage = 10;
-    }
-
-    private IEnumerator SpeedUpTimer()
-    {
-        float previousMoveSpeed = movementSpeed;
-        movementSpeed = 7.5f;
-        int timeLeft = 10;
-        while (timeLeft >= 0)
-        {
-            Debug.Log("PowerUp still going");
-            yield return new WaitForSeconds(1.0f);
-            timeLeft--;
-        }
-        movementSpeed = previousMoveSpeed;
     }
 }
