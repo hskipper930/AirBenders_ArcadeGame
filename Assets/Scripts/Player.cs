@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
         {
             //GameObject shot = Instantiate(rangedHitbox, transform.position, transform.rotation);
             //shot.GetComponent<ProjectileMovement>().SetTarget(mousePos);
-            ProjectileObjectPooling.ActivateProjectile(transform.position, mousePos,);
+            //ProjectileObjectPooling.ActivateProjectile(transform.position, mousePos,);
         }
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
