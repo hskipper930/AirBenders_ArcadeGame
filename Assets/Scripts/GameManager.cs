@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
             //spawn
             GameObject nEnemy = Instantiate(typeToUse, spawnPoints[spawnLoc].transform);
             //set Stats
-            nEnemy.GetComponent<EnemyAI>().SetStats(speed, health, damage);
+            nEnemy.GetComponent<EnemyAI>().SetStats(health, damage, speed);
         }
         enemiesToSpawn++;
     }

@@ -11,7 +11,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private GameObject[] powerUps;
     [SerializeField] private int powerUpDropChance;
 
-    public void SetStats(int enemyhealth, int enemyDamage, int enemySpeed)
+    public void SetStats(int enemyhealth, int enemyDamage, float enemySpeed)
     {
         health = enemyhealth;
         damage = enemyDamage;
