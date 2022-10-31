@@ -34,7 +34,7 @@ public class ProjectileMovement : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, targetPosition, interpolant);
         if(transform.position == targetPosition)
         {
-            gameObject.SetActive(false);
+            ProjectileObjectPooling.DeactivateProjectile(gameObject);
         }
     }
 
