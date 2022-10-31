@@ -78,6 +78,9 @@ public class BossAI : RangedEnemyAI
 
     protected override void OnCollisionEnter(Collision collision)
     {
-        //damage player
+        if(collision.gameObject.CompareTag("player"))
+        {
+            collision.gameObject.GetComponent<Player>().TakeDamage(damage);
+        }
     }
 }

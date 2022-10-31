@@ -39,7 +39,7 @@ public class EnemyAI : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("player"))
         {
-            //damage player
+            collision.gameObject.GetComponent<Player>().TakeDamage(damage);
             OnDeath();
             Destroy(gameObject);
         }

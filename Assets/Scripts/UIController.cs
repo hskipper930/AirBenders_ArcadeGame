@@ -27,4 +27,9 @@ public class UIController : MonoBehaviour
     {
         panel.SetActive(false);
     }
+
+    public void OnQuitButtonClick()
+    {
+        Application.Quit();
+    }
 }
