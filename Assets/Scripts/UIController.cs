@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject helpPanel;
+    [SerializeField] private GameObject scoresPanel;
+
+    public void OnPlayButtonClick()
     {
-        
+        SceneManager.LoadScene("MainLevel");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnHelpButtonClick()
     {
-        
+        helpPanel.SetActive(true);
     }
+
+    public void
 }

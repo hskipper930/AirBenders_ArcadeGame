@@ -60,7 +60,7 @@ public class EnemyAI : MonoBehaviour
         int randomNum = Random.Range(0, 100);
         if(randomNum <= powerUpDropChance)
         {
-            randomNum = Random.Range(0, powerUps.Length - 1);
+            randomNum = Random.Range(0, powerUps.Length);
             Instantiate(powerUps[randomNum], transform.position, transform.rotation);
 
         }
