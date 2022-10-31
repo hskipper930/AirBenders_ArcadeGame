@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
             int spawnLoc = Random.Range(0, 20);
             //Decide between ranged and melee
             GameObject typeToUse;
-            int typeDecide = Random.Range(0, 1);
+            int typeDecide = Random.Range(0, 2);
             switch (typeDecide)
             {
                 case 0:

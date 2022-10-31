@@ -133,5 +133,5 @@ MonoBehaviour:
   powerUps:
   - {fileID: 2647020607166636692, guid: 8c800419afda439409fdc612a5fbc107, type: 3}
   - {fileID: 3816222668616439656, guid: 8c04f87908852d042867d0ff02fe4379, type: 3}
-  powerUpDropChance: 0
+  powerUpDropChance: 100
   shootCooldown: 3
