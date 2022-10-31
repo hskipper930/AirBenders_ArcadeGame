@@ -6,6 +6,14 @@ public class RangedEnemyAI : EnemyAI
 {
     [SerializeField] private float shootCooldown; //number of seconds between firing.
 
+    public void SetStats(int enemyhealth, int enemyDamage, float enemySpeed, float fireRate)
+    {
+        health = enemyhealth;
+        damage = enemyDamage;
+        speed = enemySpeed;
+        shootCooldown = fireRate;
+    }
+
     protected override void Start()
     {
         base.Start();
