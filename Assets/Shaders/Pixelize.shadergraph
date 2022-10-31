@@ -44,6 +44,9 @@
         },
         {
             "m_Id": "6b9c1c751c3641e0b2a190bb350eb9a8"
+        },
+        {
+            "m_Id": "2c58704d00f14792beea7360bb75b148"
         }
     ],
     "m_GroupDatas": [],
@@ -136,8 +139,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 260.0,
-            "y": -24.0
+            "x": 499.0000305175781,
+            "y": -57.00001525878906
         },
         "m_Blocks": [
             {
@@ -153,8 +156,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 260.0,
-            "y": 176.0
+            "x": 499.0000305175781,
+            "y": 143.00001525878907
         },
         "m_Blocks": [
             {
@@ -237,6 +240,42 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "2c58704d00f14792beea7360bb75b148",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 13.0,
+            "y": -91.00001525878906,
+            "width": 134.00001525878907,
+            "height": 34.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "d01216b05a484279ba67b60f450181b8"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "daab298199d74c83a2e72f9e4639f402"
     }
 }
 
@@ -699,6 +738,19 @@
         "z": 0.0,
         "w": 0.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
+    "m_ObjectId": "d01216b05a484279ba67b60f450181b8",
+    "m_Id": 0,
+    "m_DisplayName": "_MainTex",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_BareResource": false
 }
 
 {
