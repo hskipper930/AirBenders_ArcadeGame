@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject[] spawnPoints = new GameObject[20];
     [SerializeField] private GameObject rangedEnemy;
     [SerializeField] private GameObject meleeEnemy;
+    [SerializeField] private GameObject bossEnemy;
     private int enemiesToSpawn = 5;
 
     private float speed = 3f;
@@ -30,7 +31,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MakeWave(enemiesToSpawn);
         StartCoroutine(WaveTimer());
     }
 
@@ -66,17 +66,24 @@ public class GameManager : MonoBehaviour
             GameObject nEnemy = Instantiate(typeToUse, spawnPoints[spawnLoc].transform.position, transform.rotation);
             if(typeToUse == rangedEnemy)
             {
-                int shootSpeed = Random.Range(8, 12);
-                nEnemy.GetComponent<EnemyAI>().SetStats(health, damage, speed /*shootSpeed*/);
+                float shootSpeed = Random.Range(4, 8);
+                nEnemy.GetComponent<RangedEnemyAI>().SetStats(health, damage, speed, shootSpeed);
             }
             else
             {
                 nEnemy.GetComponent<EnemyAI>().SetStats(health, damage, speed);
             }
-            //set Stats
             
         }
+        if(wave % 3 == 0)
+        {
+            int spawnLoc = Random.Range(0, 20);
+            GameObject bEnemy = Instantiate(bossEnemy, spawnPoints[spawnLoc].transform.position, transform.rotation);
+            bEnemy.GetComponent<BossAI>().SetStats(health * 5, damage * 2, speed * 1.5f);
+            diffModifier += 0.1f;
+        }
         enemiesToSpawn++;
+        IncreaseDifficulty();
     }
 
     //Difficulty
