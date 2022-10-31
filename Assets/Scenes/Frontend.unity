@@ -2083,7 +2083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   helpPanel: {fileID: 1423619822}
-  scoresPanel: {fileID: 0}
+  scoresPanel: {fileID: 521166875}
 --- !u!1 &1855007840
 GameObject:
   m_ObjectHideFlags: 0
