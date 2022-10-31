@@ -6,7 +6,7 @@ public class EnemyAI : MonoBehaviour
 {
     [SerializeField] protected float speed;
     protected Transform targetTransform;
-    [SerializeField] private int health;
+    [SerializeField] protected int health;
     [SerializeField] protected int damage;
     [SerializeField] private GameObject[] powerUps;
     [SerializeField] private int powerUpDropChance;

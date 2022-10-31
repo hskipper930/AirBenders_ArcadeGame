@@ -18,5 +18,13 @@ public class UIController : MonoBehaviour
         helpPanel.SetActive(true);
     }
 
-    //public void
+    public void OnScoresButtonClick()
+    {
+        scoresPanel.SetActive(true);
+    }
+
+    public void OnCloseButtonClick(GameObject panel)
+    {
+        panel.SetActive(false);
+    }
 }
