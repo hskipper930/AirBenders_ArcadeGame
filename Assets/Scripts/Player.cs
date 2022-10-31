@@ -59,21 +59,21 @@ public class Player : MonoBehaviour
         //--------Movement-------------
         playerRB.MovePosition(playerRB.position + movement * movementSpeed * Time.fixedDeltaTime);
 
-        if(transform.position.x > 25)
+        if(transform.position.x > 35)
         {
-            playerRB.AddForce(new Vector3 (-15, 0));
+            playerRB.AddForce(new Vector3 (-35, 0));
         }
-        if (transform.position.x < -25)
+        if (transform.position.x < -35)
         {
-            playerRB.AddForce(new Vector3(15, 0));
+            playerRB.AddForce(new Vector3(35, 0));
         }
-        if (transform.position.y > 12)
+        if (transform.position.y > 22)
         {
-            playerRB.AddForce(new Vector3(0, -15));
+            playerRB.AddForce(new Vector3(0, -35));
         }
-        if (transform.position.y < -12)
+        if (transform.position.y < -22)
         {
-            playerRB.AddForce(new Vector3(0, 15));
+            playerRB.AddForce(new Vector3(0, 35));
         }
 
         //Vector3 lookDir = mousePos - playerRB.position;

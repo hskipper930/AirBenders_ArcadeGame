@@ -63,9 +63,18 @@ public class GameManager : MonoBehaviour
                     break;
             }
             //spawn
-            GameObject nEnemy = Instantiate(typeToUse, spawnPoints[spawnLoc].transform);
+            GameObject nEnemy = Instantiate(typeToUse, spawnPoints[spawnLoc].transform.position, transform.rotation);
+            if(typeToUse == rangedEnemy)
+            {
+                int shootSpeed = Random.Range(8, 12);
+                nEnemy.GetComponent<EnemyAI>().SetStats(health, damage, speed /*shootSpeed*/);
+            }
+            else
+            {
+                nEnemy.GetComponent<EnemyAI>().SetStats(health, damage, speed);
+            }
             //set Stats
-            nEnemy.GetComponent<EnemyAI>().SetStats(health, damage, speed);
+            
         }
         enemiesToSpawn++;
     }
@@ -85,7 +94,7 @@ public class GameManager : MonoBehaviour
         {
             MakeWave(enemiesToSpawn);
             wave++;
-            yield return new WaitForSeconds(30f);
+            yield return new WaitForSeconds(20f);
         }
     }
 }
