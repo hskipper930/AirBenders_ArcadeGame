@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private Rigidbody playerRB;
     [SerializeField] private Camera cam;
     [SerializeField] GameObject gameManager;
+    [SerializeField] UIController ui;
 
     //--------Movement Parameters------------
     #region MovementParameters
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ui.UpdateHPText(health);
         playerRB = GetComponent<Rigidbody>();
     }
 
@@ -102,9 +104,10 @@ public class Player : MonoBehaviour
     {
         dmg -= defense;
         health -= dmg;
-        movementSpeed = 0;
+        ui.UpdateHPText(health);
         if(health <= 0)
         {
+            movementSpeed = 0;
             gameManager.GetComponent<GameManager>().EndGame();
         }
     }

@@ -11,6 +11,7 @@ public class BossAI : RangedEnemyAI
 
     protected override void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameController");
         targetTransform = GameObject.FindGameObjectWithTag("player").transform;
         StartCoroutine(ChangeState());
     }

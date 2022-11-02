@@ -10,6 +10,10 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject scoresPanel;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text hpText;
+    [SerializeField] private GameObject newHighScorePanel;
+    [SerializeField] private TMP_InputField nameInputField;
+    [SerializeField] private GameManager gm;
 
     public void OnPlayButtonClick()
     {
@@ -41,8 +45,27 @@ public class UIController : MonoBehaviour
         scoreText.text = "Score: " + score.ToString();
     }
 
-    public void ShowDeathPanel()
+    public void UpdateHPText(int health)
+    {
+        hpText.text = "Health: " + health.ToString();
+    }
+
+    public void OnMenuButtonClick()
+    {
+        SceneManager.LoadScene("Frontend");
+    }
+
+    public void ShowDeathPanel(bool isHighScore)
     {
         gameOverPanel.SetActive(true);
+        if(isHighScore)
+        {
+            newHighScorePanel.SetActive(true);
+        }
+    }
+
+    public void OnDoneButtonClick()
+    {
+        gm.AddNewScore(nameInputField.text);
     }
 }

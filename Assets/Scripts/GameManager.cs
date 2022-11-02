@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     private int wave = 1;
 
     private int score;
+    [SerializeField] private HighScores highscores;
     [SerializeField] private UIController ui;
 
     // Start is called before the first frame update
@@ -70,7 +71,7 @@ public class GameManager : MonoBehaviour
             if(typeToUse == rangedEnemy)
             {
                 float shootSpeed = Random.Range(4, 8);
-                nEnemy.GetComponent<RangedEnemyAI>().SetStats(health, damage, speed, shootSpeed);
+                nEnemy.GetComponent<RangedEnemyAI>().SetStats(health, damage, speed, shootSpeed, 15);
             }
             else
             {
@@ -116,6 +117,11 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        ui.ShowDeathPanel();
+        ui.ShowDeathPanel(highscores.CheckForHighScore(score));
+    }
+
+    public void AddNewScore(string name)
+    {
+        highscores.AddHighScore(name, score);
     }
 }
