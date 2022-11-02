@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private GameObject[] powerUps;
     [SerializeField] private int powerUpDropChance;
     protected int score;
+    private GameObject gameManager;
 
     public void SetStats(int enemyhealth, int enemyDamage, float enemySpeed, int scoreVal)
     {
@@ -23,6 +24,7 @@ public class EnemyAI : MonoBehaviour
     protected virtual void Start()
     {
         targetTransform = GameObject.FindGameObjectWithTag("player").transform;
+        gameManager = GameObject.FindGameObjectWithTag("GameController");
     }
 
     private void Update()
@@ -53,7 +55,7 @@ public class EnemyAI : MonoBehaviour
         if(health <= 0)
         {
             OnDeath();
-            GameManager.AddScore(score);
+            gameManager.GetComponent<GameManager>().AddScore(score);
             Destroy(gameObject);
         }
     }

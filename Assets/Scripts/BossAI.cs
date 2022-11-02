@@ -71,7 +71,7 @@ public class BossAI : RangedEnemyAI
                     break;
             }
             GameObject enemy = Instantiate(enemyToSpawn, spawnPosition, transform.rotation);
-            enemy.GetComponent<EnemyAI>().SetStats(2, 1, 5);
+            enemy.GetComponent<EnemyAI>().SetStats(2, 1, 5, 5);
             yield return new WaitForSeconds(Random.Range(.5f, 3));
         }
     }

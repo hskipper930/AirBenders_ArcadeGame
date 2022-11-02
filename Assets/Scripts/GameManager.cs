@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                nEnemy.GetComponent<EnemyAI>().SetStats(health, damage, speed);
+                nEnemy.GetComponent<EnemyAI>().SetStats(health, damage, speed, 10);
             }
             
         }
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
         {
             int spawnLoc = Random.Range(0, 20);
             GameObject bEnemy = Instantiate(bossEnemy, spawnPoints[spawnLoc].transform.position, transform.rotation);
-            bEnemy.GetComponent<BossAI>().SetStats(health * 5, damage * 2, speed * 1.5f);
+            bEnemy.GetComponent<BossAI>().SetStats(health * 5, damage * 2, speed * 1.5f, 100);
             diffModifier += 0.1f;
         }
         enemiesToSpawn++;
@@ -112,5 +112,10 @@ public class GameManager : MonoBehaviour
     {
         score += scoreAmount;
         ui.UpdateScoreText(score);
+    }
+
+    public void EndGame()
+    {
+        ui.ShowDeathPanel();
     }
 }

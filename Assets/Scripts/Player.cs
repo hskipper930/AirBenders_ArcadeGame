@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     //General Parameters
     private Rigidbody playerRB;
     [SerializeField] private Camera cam;
+    [SerializeField] GameObject gameManager;
 
     //--------Movement Parameters------------
     #region MovementParameters
@@ -101,9 +102,10 @@ public class Player : MonoBehaviour
     {
         dmg -= defense;
         health -= dmg;
+        movementSpeed = 0;
         if(health <= 0)
         {
-            //GAME OVER (Call Game Manager for Game Over)
+            gameManager.GetComponent<GameManager>().EndGame();
         }
     }
 
