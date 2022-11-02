@@ -10,12 +10,14 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] protected int damage;
     [SerializeField] private GameObject[] powerUps;
     [SerializeField] private int powerUpDropChance;
+    protected int score;
 
-    public void SetStats(int enemyhealth, int enemyDamage, float enemySpeed)
+    public void SetStats(int enemyhealth, int enemyDamage, float enemySpeed, int scoreVal)
     {
         health = enemyhealth;
         damage = enemyDamage;
         speed = enemySpeed;
+        score = scoreVal;
     }
 
     protected virtual void Start()
@@ -51,6 +53,7 @@ public class EnemyAI : MonoBehaviour
         if(health <= 0)
         {
             OnDeath();
+            GameManager.AddScore(score);
             Destroy(gameObject);
         }
     }
