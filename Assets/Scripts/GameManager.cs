@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     private float diffModifier = 1f;
     private int wave = 1;
 
+    private static int score;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -103,5 +105,10 @@ public class GameManager : MonoBehaviour
             wave++;
             yield return new WaitForSeconds(20f);
         }
+    }
+
+    public static void AddScore(int scoreAmount)
+    {
+        score += scoreAmount;
     }
 }
