@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
     private float diffModifier = 1f;
     private int wave = 1;
 
-    private static int score;
+    private int score;
+    [SerializeField] private UIController ui;
 
     // Start is called before the first frame update
     void Start()
@@ -107,8 +108,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static void AddScore(int scoreAmount)
+    public void AddScore(int scoreAmount)
     {
         score += scoreAmount;
+        ui.UpdateScoreText(score);
     }
 }

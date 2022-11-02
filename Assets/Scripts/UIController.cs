@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
     [SerializeField] private GameObject helpPanel;
     [SerializeField] private GameObject scoresPanel;
+    [SerializeField] private TMP_Text scoreText;
 
     public void OnPlayButtonClick()
     {
@@ -31,5 +33,10 @@ public class UIController : MonoBehaviour
     public void OnQuitButtonClick()
     {
         Application.Quit();
+    }
+
+    public void UpdateScoreText(int score)
+    {
+        scoreText.text = "Score: " + score.ToString();
     }
 }

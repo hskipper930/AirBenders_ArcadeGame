@@ -783,6 +783,7 @@ GameObject:
   - component: {fileID: 761519298}
   - component: {fileID: 761519297}
   - component: {fileID: 761519296}
+  - component: {fileID: 761519300}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -873,6 +874,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &761519300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761519295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91e3f073acb01941ab08401eacf13f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  helpPanel: {fileID: 0}
+  scoresPanel: {fileID: 0}
+  scoreText: {fileID: 1001777775}
 --- !u!1 &823804109
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,6 +1290,7 @@ MonoBehaviour:
     type: 3}
   bossEnemy: {fileID: 737924710897858669, guid: e588c09b16e50564ebede3281bdae82b,
     type: 3}
+  ui: {fileID: 761519300}
 --- !u!4 &1143515385
 Transform:
   m_ObjectHideFlags: 0
