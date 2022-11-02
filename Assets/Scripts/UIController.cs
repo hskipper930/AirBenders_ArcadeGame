@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] private GameObject helpPanel;
     [SerializeField] private GameObject scoresPanel;
+    [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TMP_Text scoreText;
 
     public void OnPlayButtonClick()
@@ -38,5 +39,10 @@ public class UIController : MonoBehaviour
     public void UpdateScoreText(int score)
     {
         scoreText.text = "Score: " + score.ToString();
+    }
+
+    public void ShowDeathPanel()
+    {
+        gameOverPanel.SetActive(true);
     }
 }
